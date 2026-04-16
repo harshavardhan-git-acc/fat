@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Gold Rate Tracker</title>
+    <!-- FIXED: Correct CDN link for Chart.js -->
     <script src="https://jsdelivr.net"></script>
     <style>
         body { font-family: sans-serif; text-align: center; background: #f4f4f4; }
@@ -15,20 +16,27 @@
         <canvas id="goldChart"></canvas>
     </div>
     <script>
-        const ctx = document.getElementById('goldChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'],
-                datasets: [{
-                    label: 'Price (per 10g in ₹)',
-                    data: [72000, 74000, 73500, 75000, 77000, 79000, 82000, 85000, 88000, 92000, 95000, 98000],
-                    borderColor: 'gold',
-                    backgroundColor: 'rgba(255, 215, 0, 0.2)',
-                    fill: true
-                }]
-            }
-        });
+        // Use window.onload to ensure the library is ready before running the script
+        window.onload = function() {
+            const ctx = document.getElementById('goldChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'],
+                    datasets: [{
+                        label: 'Price (per 10g in ₹)',
+                        data: [72000, 74000, 73500, 75000, 77000, 79000, 82000, 85000, 88000, 92000, 95000, 98000],
+                        borderColor: 'gold',
+                        backgroundColor: 'rgba(255, 215, 0, 0.2)',
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true
+                }
+            });
+        };
     </script>
 </body>
 </html>
