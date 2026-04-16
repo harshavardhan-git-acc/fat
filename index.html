@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Gold Rate Tracker</title>
-    <!-- FIXED: Correct CDN link for Chart.js -->
+    <!-- CORRECTED LINK BELOW -->
     <script src="https://jsdelivr.net"></script>
     <style>
-        body { font-family: sans-serif; text-align: center; background: #f4f4f4; }
+        body { font-family: sans-serif; text-align: center; background: #f4f4f4; padding-top: 50px; }
         .container { width: 80%; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
     </style>
 </head>
@@ -16,27 +16,27 @@
         <canvas id="goldChart"></canvas>
     </div>
     <script>
-        // Use window.onload to ensure the library is ready before running the script
-        window.onload = function() {
-            const ctx = document.getElementById('goldChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'],
-                    datasets: [{
-                        label: 'Price (per 10g in ₹)',
-                        data: [72000, 74000, 73500, 75000, 77000, 79000, 82000, 85000, 88000, 92000, 95000, 98000],
-                        borderColor: 'gold',
-                        backgroundColor: 'rgba(255, 215, 0, 0.2)',
-                        fill: true
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true
+        const ctx = document.getElementById('goldChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'],
+                datasets: [{
+                    label: 'Price (per 10g in ₹)',
+                    data: [72000, 74000, 73500, 75000, 77000, 79000, 82000, 85000, 88000, 92000, 95000, 98000],
+                    borderColor: '#FFD700',
+                    backgroundColor: 'rgba(255, 215, 0, 0.2)',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: false }
                 }
-            });
-        };
+            }
+        });
     </script>
 </body>
 </html>
